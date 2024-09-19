@@ -47,7 +47,7 @@ Cargo, standart meta verilerle yeni bir Rust paketi oluşturma konusunda da bize
 
 ```bash
 $ cargo new --bin hello
- Created binary (application) hello project
+ Created binary (application) `hello` package
 ```
 
 Resim : 
