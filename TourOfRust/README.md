@@ -67,3 +67,40 @@ $ ls -la or dir
 Bu komut, dizininizdeki dosya ve klasörlerin listesini gösterir. Çıktınız şöyle görünmelidir:
 
 ![Resim](https://i.ibb.co/6JFbQjb/Directory.png)
+
+## Proje Dosyalarının Açıklaması
+
+Cargo, proje dizininde birkaç önemli dosya ve klasör oluşturur:
+
+1. Cargo.toml: Bu dosya, projenizin meta verilerini içerir. Başlangıçta şu şekilde görünür:
+
+```toml
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+```
+
+Resim :
+
+![Resim](https://i.ibb.co/n8dsVKB/Rust-Toml-File.png)
+
+Burada, projenizin adı, sürümü vb yer alır. İleride başka kütüphanelere bağımlılıklar eklemeniz gerektiğinde, bu dosyada güncellemeler yapabilirsiniz.
+
+2. .git ve .gitignore: Cargo, projenizi Git versiyon kontrol sistemi ile kullanıma hazır hale getirir.
+.gitignore dosyası, hangi dosyaların versiyon kontrolüne alınmayacağını belirler.
+
+3. src Klasörü: Uygulamanızın gerçek Rust kodunu barındıran klasördür. İçinde main.rs adında bir dosya bulunur:
+
+```bash
+$ cd src
+$ ls -l or dir
+```
+
+Çıktınız şöyle görünmelidir:
+
+Resim :
+
+![Resim](https://i.ibb.co/cYB1Cwc/Rust-Src-File.png)
