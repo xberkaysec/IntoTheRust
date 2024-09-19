@@ -53,3 +53,17 @@ $ cargo new --bin hello
 Resim : 
 
 ![Resim](https://i.ibb.co/yRC6NPm/Cargo-New-Project.png)
+
+
+## Proje Dizini Yapısını İnceleme
+
+Yeni oluşturduğunuz hello dizinine geçelim:
+
+```bash
+$ cd hello
+$ ls -la or dir
+```
+
+Bu komut, dizininizdeki dosya ve klasörlerin listesini gösterir. Çıktınız şöyle görünmelidir:
+
+![Resim](https://i.ibb.co/6JFbQjb/Directory.png)
