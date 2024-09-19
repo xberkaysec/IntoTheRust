@@ -31,3 +31,25 @@ Resim :
 
 ![Resim](https://i.ibb.co/x254wVm/resim-2024-09-19-160414076.png)
 
+Yukarıdaki komutları çalıştırarak her birinin hangi sürümde olduğunu sorguladık.
+Komutların işlevleri şu şekildedir:
+
+1. Cargo: Rust'ın derleme yöneticisi, paket yöneticisi ve genel amaçlı aracıdır.
+Yeni bir proje başlatmak, programınızı derlemek ve çalıştırmak,
+ayrıca kodunuzun bağımlı olduğu dış kütüphaneleri yönetmek için Cargo'yu kullanabilirsiniz.
+  
+2. rustc: Rust derleyicisidir. Genellikle Cargo'nun derleyiciyi bizim için çağırmasına izin veririz, ancak bazen doğrudan çalıştırmak faydalı olabilir.
+
+3. rustdoc: Rust belgelendirme aracıdır. Programınızın kaynak kodundaki uygun biçimdeki yorumlarda belgeler yazarsanız,
+rustdoc bunlardan güzel formatlanmış HTML oluşturabilir. rustc gibi, genellikle Cargo'nun rustdoc'u çalıştırmasına izin veririz.
+
+Cargo, standart meta verilerle yeni bir Rust paketi oluşturma konusunda da bize yardımcı olabilir:
+
+```bash
+$ cargo new --bin hello
+ Created binary (application) hello project
+```
+
+Resim : 
+
+![Resim](https://i.ibb.co/yRC6NPm/Cargo-New-Project.png)
