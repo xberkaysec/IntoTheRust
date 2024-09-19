@@ -27,5 +27,5 @@ $ rustdoc --version
 rustdoc 1.81.0 (eeb90cda1 2024-09-04)
 ```
 
-![alt_text](https://ibb.co/D1Kqm3G)
+![](https://ibb.co/D1Kqm3G)
 
