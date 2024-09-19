@@ -104,3 +104,94 @@ $ ls -l or dir
 Resim :
 
 ![Resim](https://i.ibb.co/cYB1Cwc/Rust-Src-File.png)
+
+## Rust ile İlk Programınızı Yazma ve Çalıştırma: Adım Adım Kılavuz
+
+Rust programlama diline yeni başlayanlar için ilk adım, "Hello, World!" programını yazmak ve çalıştırmaktır.
+Bu yazıda, Cargo kullanarak nasıl basit bir Rust programı oluşturacağınızı ve çalıştıracağınızı öğreneceksiniz.
+
+1. Proje Oluşturma
+
+Öncelikle, yeni bir Rust projesi oluşturmalısınız. 
+Terminalde aşağıdaki komutu kullanarak yeni bir uygulama paketi oluşturabilirsiniz:
+
+```bash
+cargo new --bin hello_world
+```
+
+Bu komut, hello adında bir dizin oluşturur ve gerekli dosyaları ayarlar.
+
+2. main.rs Dosyasını İnceleme
+
+Oluşturulan proje dizininde, src klasöründe main.rs dosyası bulunur. 
+Bu dosya, Rust programınızın giriş noktasıdır. Varsayılan olarak şu şekilde görünür:
+
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+Burada, main fonksiyonu programın başlangıç noktasıdır ve println! makrosu ile ekrana "Hello, world!" yazdırır.
+
+3. Programı Çalıştırma
+
+Artık programınızı çalıştırmaya hazırsınız. 
+Terminalde aşağıdaki komutu girerek programı derleyebilir ve çalıştırabilirsiniz:
+
+```bash
+cargo run
+```
+
+Bu komut, Cargo'nun Rust derleyicisini (rustc) çağırarak programı derlemesini sağlar.
+Ardından, oluşturulan yürütülebilir dosyayı çalıştırır. Çıktı aşağıdaki gibi olacaktır:
+
+```
+Compiling hello v0.1.0 (file:///path/to/your/hello)
+Finished dev [unoptimized + debuginfo] target(s) in 0.27 secs
+ Running `target\debug\hello_world.exe`  
+Hello, world!
+```
+
+Resim :
+
+![Resim](https://i.ibb.co/LStRWkx/Cargo-Run-File.png)
+
+4. Yürütülebilir Dosyanın Bulunduğu Yer
+
+Cargo, yürütülebilir dosyayı proje dizininizdeki target/debug klasörüne yerleştirir. 
+Bu dizindeki dosyaları görmek için şu komutu kullanabilirsiniz:
+
+```bash
+ls -l ../target/debug or dir target\debug 
+````
+
+Çıktınız aşağıdaki gibi görünmelidir:
+
+Resim :
+
+![Resim](https://i.ibb.co/kyDTqz0/resim-2024-09-19-171539146.png)
+
+Burada hello dosyası, yürütülebilir dosyanızdır. 
+Bunu doğrudan çalıştırmak için aşağıdaki komutu kullanabilirsiniz:
+
+```bash
+../target/debug/hello
+```
+
+5. Geçici Dosyaları Temizleme
+
+Projenizle işiniz bittiğinde, Cargo otomatik olarak oluşturulan dosyaları temizlemenizi sağlar.
+Aşağıdaki komutu kullanarak tüm geçici dosyaları kaldırabilirsiniz:
+
+```bash
+cargo clean
+```
+
+Temizleme işlemi tamamlandığında, artık yürütülebilir dosya mevcut olmayacaktır:
+
+Bu komut çalıştırıldığında "No such file or directory" hatası alırsınız; bu da dosyanın silindiğini gösterir.
+
+Resim :
+
+![Resim](https://i.ibb.co/ZhPx14D/resim-2024-09-19-171809211.png)
