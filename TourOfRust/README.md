@@ -430,4 +430,9 @@ println!("{:?}'in en büyük ortak böleni {}'dir.", numbers, d);
 Sonuç olarak, kullanıcı tarafından girilen sayıların ve hesaplanan en büyük ortak bölenin çıktısını ekrana yazdırır.
 {:?} formatı, vektörü okunabilir bir formatta gösterir.
 
+5. Çalıştırma
+
+Resim : 
+
+![Resim](https://i.ibb.co/zRv8nDV/resim-2024-09-20-135536755.png)
 
