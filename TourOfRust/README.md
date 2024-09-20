@@ -195,3 +195,94 @@ Bu komut çalıştırıldığında "No such file or directory" hatası alırsın
 Resim :
 
 ![Resim](https://i.ibb.co/ZhPx14D/resim-2024-09-19-171809211.png)
+
+# Rust ile En Büyük Ortak Bölgenin Hesaplanması: Euclid Algoritması
+
+Rust programlama dilinin sözdizimi, C, C++, Java veya JavaScript gibi dillerden aşina olanlar için oldukça tanıdık bir yapıya sahiptir.
+Bu yazıda, iki tam sayının en büyük ortak bölenini (EBOB) hesaplamak için Euclid algoritmasını kullanan basit bir Rust fonksiyonu inceleyeceğiz.
+
+## GCD Fonksiyonu Nedir?
+
+İki tamsayı için EBOB'u hesaplayan gcd adlı bir fonksiyon yer almaktadır. (/gcd_func.rs)
+
+
+1. Fonksiyonun Yapısı
+
+- Fonksiyon Tanımı: fn anahtar kelimesi ile başlar ve gcd adında bir fonksiyon tanımlanır.
+- Bu fonksiyon, n ve m adında iki u64 (64-bit işaretsiz tam sayı) parametresi alır. Fonksiyon, u64 türünde bir değer döndürür.
+- Değişkenler: Rust'ta değişkenler varsayılan olarak değiştirilemez.
+Ancak, mut anahtar kelimesi ile değişkenlerin değeri değiştirilebilir hale getirilir. Bu sayede n ve m üzerinde işlem yapabiliriz.
+
+2. Hata Kontrolü
+
+Fonksiyonun başlangıcında yer alan assert! makrosu, her iki argümanın sıfır olmadığını kontrol eder. 
+Eğer bu koşul sağlanmazsa, program hata mesajıyla sonlanır. 
+Rust, bu tür kontrolleri her zaman gerçekleştirir; bu da güvenilir bir kod yazımını teşvik eder.
+
+3. Döngü ve Koşul Kontrolü
+
+Fonksiyonun ana kısmı, bir while döngüsü içerir. 
+Rust, koşul ifadeleri için parantez kullanımını zorunlu kılmaz, 
+ancak kontrol edilen ifadelerin süslü parantezler içinde yazılmasını gerektirir. 
+
+4. Yerel Değişkenler
+
+Fonksiyon içinde let ifadesi kullanılarak yerel bir değişken olan t tanımlanır. 
+Rust, t değişkeninin türünü kullanımına göre otomatik olarak çıkarır; bu durumda u64 türündedir.
+
+5. Değer Döndürme
+
+Rust'ta bir fonksiyonun sonuna geldiğinde eğer son ifade bir noktalı virgülle bitmiyorsa, o ifade fonksiyonun dönüş değeri olur. 
+Bu özellik, Rust programlamada yaygın olarak kullanılır.
+
+# Rust ile Birim Testleri Yazma ve Çalıştırma
+
+Rust, dilin içine yerleşik basit bir test desteği sunar. 
+Bu yazıda, gcd (En Büyük Ortak Bölgenin) fonksiyonumuzu test etmek için nasıl birim testleri yazabileceğimizi öğreneceğiz.
+
+1. Birim Testi Tanımlama
+
+Rust'ta birim testleri, #[test] özniteliği ile işaretlenmiş fonksiyonlar aracılığıyla tanımlanır. 
+GCD fonksiyonunu test eden örnek bir test fonksiyonu bulunmaktadır. (/gcd_test_func.rs)
+
+
+2. Test Fonksiyonu Açıklaması
+
+- Fonksiyon Adı: test_gcd, test edilen gcd fonksiyonunu çağırır ve doğru değerler döndürdüğünü kontrol eder.
+- assert_eq! Makrosu: Bu makro, iki değerin eşit olup olmadığını kontrol eder. Eğer değerler eşit değilse, test başarısız olur.
+
+3. Testlerin Çalıştırılması
+
+Testleri çalıştırmak için terminalde aşağıdaki komutu kullanabilirsiniz:
+
+```bash
+$ cargo test
+```
+
+4. Çıktı Örneği
+
+Komutu çalıştırdığınızda aşağıdaki gibi bir çıktı alacaksınız:
+
+```bash
+Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s                                                    
+Running unittests src/main.rs (target\debug\deps\gcd_test-62e132308c5a818b.exe)        
+
+running 1 test
+test test_gcd ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s 
+```
+
+Resim :
+
+![Resim](https://i.ibb.co/H4hxKSb/resim-2024-09-20-123445500.png)
+
+Bu çıktı, testlerinizin başarılı bir şekilde geçtiğini gösterir.
+cargo test komutu, kaynak ağacınızda dağınık halde bulunan tüm test fonksiyonlarını otomatik olarak toplar ve çalıştırır.
+
+5. Öznitelikler ve Kullanım Alanları
+
+#[test] işareti, bir öznitelik örneğidir. 
+Rust'taki öznitelikler, fonksiyonlar ve diğer tanımlamalar için ek bilgi sağlamak amacıyla kullanılan açık uçlu bir sistemdir. 
+Öznitelikler, derleyici uyarılarını kontrol etmek, kod stilini denetlemek,
+belirli koşullara göre kodu dahil etmek ve Rust'ın diğer dillerle nasıl etkileşime gireceğini belirtmek gibi birçok amaç için kullanılabilir.
