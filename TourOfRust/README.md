@@ -286,3 +286,147 @@ cargo test komutu, kaynak ağacınızda dağınık halde bulunan tüm test fonks
 Rust'taki öznitelikler, fonksiyonlar ve diğer tanımlamalar için ek bilgi sağlamak amacıyla kullanılan açık uçlu bir sistemdir. 
 Öznitelikler, derleyici uyarılarını kontrol etmek, kod stilini denetlemek,
 belirli koşullara göre kodu dahil etmek ve Rust'ın diğer dillerle nasıl etkileşime gireceğini belirtmek gibi birçok amaç için kullanılabilir.
+
+# Rust ile Komut Satırı Argümanlarını İşleme: En Büyük Ortak Bölgenin Hesaplanması
+
+Rust programlama dilinde, komut satırı argümanlarını işleyerek kullanıcıdan sayı alabilir ve 
+bu sayıların en büyük ortak bölenini (GCD) hesaplayabiliriz. 
+Aşağıda, bu işlemi gerçekleştiren bir örnek programın nasıl yazılacağını adım adım inceleyeceğiz.
+
+Dosya -> (/handling_command_line.rs)
+
+1. Gerekli Kütüphaneler
+
+Öncelikle, gerekli kütüphaneleri projemize dahil etmemiz gerekiyor. 
+Bunun için `std::io::Write` ve `std::str::FromStr` kütüphanelerini kullanacağız:
+
+```rust
+use std::io::Write;
+use std::str::FromStr;
+```
+
+Açıklama:
+
+- Write Trait: Yazma işlemleri için gerekli olan write_fmt metodunu içeren bir trait'tir. Hata mesajlarını yazdırmak için kullanacağız.
+- FromStr Trait: Bir string'den belirli bir türdeki değeri ayrıştırmak için kullanılan from_str metodunu içerir.
+Sayı argümanlarını ayrıştırmak için u64 türünde kullanacağız.
+
+2. Ana Fonksiyonun Yapısı
+
+Ana fonksiyonumuzu aşağıdaki gibi tanımlıyoruz:
+
+```rust
+fn main() {
+
+    let mut numbers = Vec::new();
+
+    for arg in std::env::args().skip(1) {
+        numbers.push(u64::from_str(&arg).expect("error parsing argument"));
+    }
+    
+    if numbers.len() == 0 {
+        writeln!(std::io::stderr(), "Usage: gcd NUMBER ...").unwrap();
+        std::process::exit(1);
+    }
+
+    let mut d = numbers[0];
+
+    for m in &numbers[1..] {
+        d = gcd(d, *m);
+    }
+    
+    println!("The greatest common divisor of {:?} is {}", numbers, d);
+}
+```
+
+Açıklama:
+
+1. Ana Fonksiyonun Tanımlanması
+
+```rust
+fn main() {
+```
+
+Bu satır, Rust programının başlangıç noktası olan main fonksiyonunu tanımlar. Program burada çalışmaya başlar.
+
+
+2. Vektör Oluşturma
+
+```rust
+let mut numbers = Vec::new();
+```
+
+Bu satır, numbers adında boş bir vektör oluşturur. 
+Vec::new() fonksiyonu, dinamik olarak boyutlandırılabilen bir dizi (vektör) oluşturur. 
+mut anahtar kelimesi, bu vektörün değiştirilebilir olduğunu belirtir.
+
+3. Komut Satırı Argümanlarının Okunması
+
+```rust
+for arg in std::env::args().skip(1) {
+```
+
+Bu satır, komut satırından gelen argümanları okumaya başlar. 
+std::env::args() fonksiyonu, tüm argümanları içeren bir iterator döner. 
+skip(1) metodu ile ilk argümanı (programın adı) atlayarak sadece kullanıcıdan gelen sayıları alır.
+
+4. Argümanların Sayıya Dönüştürülmesi
+
+```rust
+numbers.push(u64::from_str(&arg).expect("argüman ayrıştırma hatası"));
+```
+
+Her bir argümanı u64 türüne dönüştürmeye çalışır ve başarılı olursa bu sayıyı numbers vektörüne ekler. 
+Eğer dönüşüm başarısız olursa, "argüman ayrıştırma hatası" mesajı verir ve program hata ile sonlanır.
+
+5. Hata Kontrolü
+
+```rust
+if numbers.len() == 0 {
+```
+
+Bu koşul, kullanıcı tarafından hiç sayı girilip girilmediğini kontrol eder.
+
+```rust
+writeln!(std::io::stderr(), "Kullanım: gcd NUMARA ...").unwrap();
+```
+
+Eğer kullanıcı hiç sayı girmediyse, hata mesajını standart hata akışına yazar. 
+writeln! makrosu, mesajı yazdırırken otomatik olarak yeni bir satıra geçer.
+
+```rust
+std::process::exit(1);
+```
+
+Programı hata kodu ile sonlandırır. 1, bir hata olduğunu belirtir.
+
+6. En Büyük Ortak Bölgenin Hesaplanması
+
+```rust
+let mut d = numbers[0];
+```
+
+d değişkenini, vektördeki ilk sayıya atar. 
+Bu değişken, en büyük ortak bölenin hesaplanmasında kullanılacaktır.
+
+```rust
+for m in &numbers[1..] {
+```
+
+Bu döngü, numbers vektöründeki ikinci elemandan başlayarak tüm elemanlar üzerinde iterasyon(yineleme) yapar.
+
+```rust
+d = gcd(d, *m);
+```
+
+Her iterasyonda, mevcut en büyük ortak bölgenin (d) ve sıradaki sayının (*m) GCD'sini hesaplar ve sonucu d değişkenine atar.
+
+▎7. Sonucun Yazdırılması
+
+    println!("{:?}'in en büyük ortak böleni {}'dir.", numbers, d);
+}
+
+Sonuç olarak, kullanıcı tarafından girilen sayıların ve hesaplanan en büyük ortak bölenin çıktısını ekrana yazdırır.
+{:?} formatı, vektörü okunabilir bir formatta gösterir.
+
+
