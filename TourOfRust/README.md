@@ -421,10 +421,11 @@ d = gcd(d, *m);
 
 Her iterasyonda, mevcut en büyük ortak bölgenin (d) ve sıradaki sayının (*m) GCD'sini hesaplar ve sonucu d değişkenine atar.
 
-▎7. Sonucun Yazdırılması
+7. Sonucun Yazdırılması
 
-    println!("{:?}'in en büyük ortak böleni {}'dir.", numbers, d);
-}
+```rust
+println!("{:?}'in en büyük ortak böleni {}'dir.", numbers, d);
+```
 
 Sonuç olarak, kullanıcı tarafından girilen sayıların ve hesaplanan en büyük ortak bölenin çıktısını ekrana yazdırır.
 {:?} formatı, vektörü okunabilir bir formatta gösterir.
