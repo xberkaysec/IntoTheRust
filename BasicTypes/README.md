@@ -71,3 +71,115 @@ Resim 1 :
 Resim 2 :
 
 ![Resim](https://i.ibb.co/VTKcLkv/Rust-Vector-2.png)
+
+## Rust Programlama Dili: Türler ve Açıklamaları
+
+Rust, güçlü bir tür sistemi ile birlikte gelir ve bu sistem, hem basit hem de karmaşık veri yapıları oluşturmanıza olanak tanır. 
+
+## 1. Temel Sayı Türleri
+
+Rust, çeşitli integer ve float türleri sunar:
+
+- Integer:
+  - i8: 8 bit işaretli tam sayı.
+  - i16: 16 bit işaretli tam sayı.
+  - i32: 32 bit işaretli tam sayı.
+  - i64: 64 bit işaretli tam sayı.
+  - u8: 8 bit işaretsiz tam sayı.
+  - u16: 16 bit işaretsiz tam sayı.
+  - u32: 32 bit işaretsiz tam sayı.
+  - u64: 64 bit işaretsiz tam sayı.
+  - isize: İşletim sisteminin kelime boyutuna göre değişen işaretli tam sayı.
+  - usize: İşletim sisteminin kelime boyutuna göre değişen işaretsiz tam sayı.
+
+- Float Sayılar:
+  - f32: 32 bit kayan nokta sayısı.
+  - f64: 64 bit kayan nokta sayısı.
+
+## 2. Diğer Temel Türler
+
+- Boolean (Bool):
+  - bool: true veya false değerlerini alabilen mantıksal tür.
+
+- Karakter (Char):
+  - char: Tek bir Unicode karakterini temsil eden tür.
+
+## 3. Tuple ve Unit Türleri
+
+- Tuple:
+  - (char, u8, i32): Farklı türlerdeki verileri bir arada tutan bir yapı.
+  Örneğin, bir karakter, bir işaretsiz tam sayı ve bir işaretli tam sayı içeren bir tuple.
+
+- Unit Türü:
+  - (): Değer içermeyen bir tür. Fonksiyonların hiçbir değer döndürmediğini belirtmek için kullanılır.
+
+## 4. Yapılar (Struct)
+
+Yapılar, birden fazla değeri bir arada tutmak için kullanılır:
+
+- Basit Yapı:
+  ```rust
+    struct Test {
+      x: f32,
+      y: f32,
+  }
+  ```
+  
+- Tuple Yapısı:
+    struct Test(i32, char);
+
+  
+- Boş Yapı:
+    struct Test;
+  
+
+## 5. Enum (Sıralı Türler)
+
+Enumlar, belirli bir grup değeri temsil etmek için kullanılır:
+
+- Basit Enum:
+  ```rust
+  enum Attend {
+      OnTime,
+      Late(u32),
+  }
+  ```
+
+## 6. Kutu (Box)
+
+Box, heap üzerinde veri saklamak için kullanılır:
+
+- Box<Attend>: Attend enum'ını heap üzerinde saklamak için kullanılan bir kutu.
+
+## 7. Referanslar
+
+Rust, referans türlerini de destekler:
+
+- Referanslar:
+  - &i32: İşaretli tam sayının referansı.
+  - &mut i32: Değiştirilebilir işaretli tam sayının referansı.
+
+## 8. String ve Dizi Türleri
+
+- String: Dinamik uzunlukta metin verisi.
+- &str: Sabit uzunlukta metin dilimi.
+  
+- Diziler:
+  - [f64; 4]: 4 elemanlı float dizisi.
+  - [u8; 256]: 256 elemanlı işaretsiz tam sayı dizisi.
+
+## 9. Vektörler
+
+- Vektör:
+  - Vec<f64>: Dinamik uzunlukta float dizisi.
+
+## 10. Diğer Referans Türleri
+
+- Dizi Referansları:
+  - &[u8], &mut [u8]: Sabit ve değiştirilebilir dizi referansları.
+
+## 11. Fonksiyon Türleri
+
+Fonksiyonların türleri de tanımlanabilir:
+
+- fn(&str, usize) -> isize: Bir string ve bir unsigned integer alıp işaretli tam sayı döndüren fonksiyon türü.
